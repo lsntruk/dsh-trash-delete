@@ -1,0 +1,61 @@
+name: release
+
+on:
+  push:
+    tags: ['v*']
+  workflow_dispatch:
+    inputs:
+      version:
+        description: '要发布的版本（已存在则跳过）'
+        required: false
+
+permissions:
+  contents: read
+  id-token: write
+
+jobs:
+  publish:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          registry-url: https://registry.npmjs.org
+
+      - name: syntax check
+        run: |
+          node --check index.js
+          node --check client.js
+          node --check session-log.js
+
+      - name: client smoke
+        run: node tools/smoke-client.mjs
+
+      - name: tag matches package.json
+        if: github.event_name == 'push'
+        run: |
+          V=$(node -p "require('./package.json').version")
+          if [ "v$V" != "$GITHUB_REF_NAME" ]; then
+            echo "tag $GITHUB_REF_NAME != package.json $V"
+            exit 1
+          fi
+
+      - name: already published?
+        id: check
+        run: |
+          V=$(node -p "require('./package.json').version")
+          if npm view "dsh-trash-delete@$V" version >/dev/null 2>&1; then
+            echo "exists=true" >> "$GITHUB_OUTPUT"
+          else
+            echo "exists=false" >> "$GITHUB_OUTPUT"
+          fi
+
+      - name: publish
+        if: steps.check.outputs.exists == 'false'
+        run: npm publish --provenance
+
+      - name: skip
+        if: steps.check.outputs.exists == 'true'
+        run: echo "dsh-trash-delete@$(node -p "require('./package.json').version") 已存在，跳过"

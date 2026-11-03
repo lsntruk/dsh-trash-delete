@@ -1,0 +1,6 @@
+{
+  "meta": {
+    "title": "Delete Session",
+    "description": "The session menu gets one row, \"Delete session\", whose dialog offers \"Delete permanently\" (its event log, projection cache, derived indexes and registry residue included) and \"Move to trash\", which the next Harness restart empties. A trash button sits beside the workspace search box: restore sessions one by one, restore them all, or empty the trash right away. Every answer's action bar also gets a delete button just before \"Branch in a new conversation\"."
+  }
+}

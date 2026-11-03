@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" width="64" height="64" role="img" aria-label="Delete session">
+  <defs>
+    <linearGradient id="sd-badge" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#5c7cfa"/>
+      <stop offset="1" stop-color="#2b3a8f"/>
+    </linearGradient>
+  </defs>
+  <rect x="4" y="4" width="56" height="56" rx="14" fill="url(#sd-badge)"/>
+  <g fill="none" stroke="#ffffff" stroke-width="3" stroke-linecap="round" stroke-linejoin="round">
+    <path d="M20 23h24"/>
+    <path d="M26 23v-3.5h12V23"/>
+    <path d="M23.5 23l1.7 17.4a3.2 3.2 0 0 0 3.2 2.9h7.2a3.2 3.2 0 0 0 3.2-2.9L40.5 23"/>
+    <path d="M29 30v8"/>
+    <path d="M35 30v8"/>
+  </g>
+</svg>

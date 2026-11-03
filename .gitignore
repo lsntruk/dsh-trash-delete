@@ -1,0 +1,21 @@
+# 依赖与构建
+node_modules/
+coverage/
+*.tgz
+
+# 自测时用的假 DSH_HOME（由 tools/*.mjs 生成/消耗）
+.test-home/
+.test-home-*/
+.test-home*
+
+# 运行期与调试产物
+*.log
+*.previous-*
+.rewrite-*
+.tmp-*
+
+# 编辑器与系统
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

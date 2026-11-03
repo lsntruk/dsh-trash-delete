@@ -1,0 +1,8 @@
+# 默认按文本处理，仓库里一律存 LF —— 避免 Windows 的 CRLF 造成「整个文件都变了」的假 diff
+* text=auto eol=lf
+
+*.png binary
+*.jpg binary
+*.ico binary
+*.zstd binary
+*.tgz binary

@@ -1,0 +1,63 @@
+{
+  "name": "dsh-trash-delete",
+  "version": "1.3.2",
+  "type": "module",
+  "description": "DSH web plugin: delete a Session with its residue, move it to a session trash that can be emptied or restored wholesale, and delete a single answer inside a Session.",
+  "main": "index.js",
+  "exports": {
+    ".": "./index.js",
+    "./client": "./client.js",
+    "./locale/*.json": "./locale/*.json",
+    "./icon": "./icon.svg",
+    "./session-log": "./session-log.js"
+  },
+  "files": [
+    "index.js",
+    "client.js",
+    "session-log.js",
+    "cordis.patch.yml",
+    "locale/*.json",
+    "icon.svg",
+    "README.md",
+    "CHANGELOG.md",
+    "LICENSE"
+  ],
+  "keywords": [
+    "dsh",
+    "deepseek-harness",
+    "cordis",
+    "plugin",
+    "session",
+    "trash",
+    "delete"
+  ],
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    },
+    "client": {
+      "platform": "web",
+      "immediately": true,
+      "inject": [
+        "@deepseek-ai/dsh-client-ui-workspace"
+      ]
+    }
+  },
+  "engines": {
+    "node": "^22.19.0 || >=24.0.0",
+    "dsh": "^0.2.0-rc.1 || ^0.2.1-rc.1"
+  },
+  "license": "MIT",
+  "author": "lsntruk",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/lsntruk/dsh-trash-delete.git"
+  },
+  "homepage": "https://github.com/lsntruk/dsh-trash-delete#readme",
+  "bugs": {
+    "url": "https://github.com/lsntruk/dsh-trash-delete/issues"
+  },
+  "publishConfig": {
+    "access": "public"
+  }
+}

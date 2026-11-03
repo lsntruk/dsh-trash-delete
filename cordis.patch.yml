@@ -1,0 +1,10 @@
+# dsh-trash-delete bundle patch.
+#
+# Mounts the server half (same-origin only HTTP routes that erase one Session's
+# stored event log, move it to a session trash, and rewrite a log to drop a
+# single answer) into the profile composition. The `dsh.client` declaration in
+# package.json makes the browser half (exports "./client", served at
+# /plugins/dsh-trash-delete/client.js) load in the web GUI.
+- insert:
+    - id: session-delete
+      name: 'dsh-trash-delete'
